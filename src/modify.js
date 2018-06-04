@@ -26,7 +26,8 @@ export default function(doc, mod, options) {
   if (options && options.each) {
     return
   }
-  return _modify(doc, mod, {...options, returnInsteadOfReplacing: true})
+
+ return _modify(doc, mod, {...options, returnInsteadOfReplacing: true})
 }
 
 
@@ -185,6 +186,11 @@ var NO_CREATE_MODIFIERS = {
 };
 
 var MODIFIERS = {
+  $gt: function (target, field, arg) {
+    console.log(target);
+    console.log(field);
+    console.log(arg);
+  },
   $currentDate: function (target, field, arg) {
     if (typeof arg === "object" && arg.hasOwnProperty("$type")) {
        if (arg.$type !== "date") {
@@ -417,9 +423,12 @@ var MODIFIERS = {
       throw ModifyJsError(
         "Cannot apply $pull/pullAll modifier to non-array", { field });
     else {
-      throw ModifyJsError("$pull not implemented yet")
-      // var out = [];
-      // if (arg != null && typeof arg === "object" && !(arg instanceof Array)) {
+      console.log(target);
+      console.log(field);
+      console.log(arg);
+      //throw ModifyJsError("$pull not implemented yet")
+      var out = [];
+      if (arg != null && typeof arg === "object" && !(arg instanceof Array)) {
       //   // XXX would be much nicer to compile this once, rather than
       //   // for each document we modify.. but usually we're not
       //   // modifying that many documents, so we'll let it slide for
@@ -437,8 +446,8 @@ var MODIFIERS = {
       //   for (var i = 0; i < x.length; i++)
       //     if (!_f._equal(x[i], arg))
       //       out.push(x[i]);
-      // }
-      // target[field] = out;
+      }
+      target[field] = out;
     }
   },
   $pullAll: function (target, field, arg) {

@@ -343,7 +343,7 @@ describe("modify", function () {
   });
   describe("$pull", () => {
     // https://docs.mongodb.com/manual/reference/operator/update/pull/#remove-all-items-that-equals-a-specified-value
-    it.skip("removes all items that equals a specified value", () => {
+    it("removes all items that equals a specified value", () => {
       const myObject = {
         _id: 1,
         fruits: [ "apples", "pears", "oranges", "grapes", "bananas" ],
@@ -361,7 +361,7 @@ describe("modify", function () {
       expect(updatedObject).toEqual(expectedObject);
     });
     // https://docs.mongodb.com/manual/reference/operator/update/pull/#remove-all-items-that-match-a-specified-pull-condition
-    it.skip("Remove All Items That Match a Specified $pull Condition", () => {
+    it("Remove All Items That Match a Specified $pull Condition", () => {
       const myObject = { _id: 1, votes: [ 3, 5, 6, 7, 7, 8 ] };
 
       const updatedObject = modify(myObject, { $pull: { votes: { $gte: 6 } } });
@@ -402,6 +402,7 @@ describe("modify", function () {
       expect(updatedObject).toEqual(expectedObject);
     })
   });
+
 
 
   it("throws an error when the operand path contains an empty field name", () => {
