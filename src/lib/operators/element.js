@@ -3,7 +3,7 @@ export const element = {
      const value = comparision.$exists;
      // matches documents with the specified field
      // https://docs.mongodb.com/manual/reference/operator/query/exists/
-     return values.filter(v => v === value);
+     return values.some(v => v === value);
    },
    $type: function(values, comparison) {
      // selects docs if specified type i.e. int, string, etc.
