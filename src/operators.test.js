@@ -1,18 +1,12 @@
+const { compare } = require('./lib/operators/compare');
   describe("$gt", () => {
     it("returns all objects in collection greater than 4", () => {
-      const myObject = [{
-        "_id": 1,
-        "qty": 20
-      }, {
-        "_id": 2,
-        "qty": 40
-      }, {
-        "_id": 3,
-        "qty": 5
-      }];
-      
-      const updatedObject = modify(myObject, {qty: {$gt: 20}});
-      console.log(updatedObject);
+      const values = [1, 10, 25, 4, 3, 2];
+      const query = {$gt: 4};
+      const expected = [10, 25];
+      const curriedCompare = compare.$gt(values, query);
+      const nextValues = curriedCompare();
+      expect(nextValues).toEqual(expected);
     });
   });
 

@@ -4,7 +4,7 @@
  * @return {boolean}
  * @description defaultNot just returns a default boolean
  */
-const function defaultNot (b) { return b; }
+export function defaultNot (b) { return b; }
 
 /*
  * @object compare
@@ -40,17 +40,17 @@ export const compare = {
     const value = comparison.$lte;
     // https://docs.mongodb.com/manual/reference/operator/query/lte/
     return ($not = defaultNot) => values.filter(v => $not(v <= value));
-  }
+  },
   $in: function(values, comparison) {
     const value = comparison.$in;
     // https://docs.mongodb.com/manual/reference/operator/query/in/
     return ($not = defaultNot) => values.filter(v => $not(value.includes(v)));
-  }
+  },
   $ne: function(values, comparison) {
     const value = comparision.$ne;
     // https://docs.mongodb.com/manual/reference/operator/query/ne/
     return ($not = defaultNot) => values.filter(v => $not(v != value));
-  }
+  },
   $nin: function(values, comparison) {
     const value = comparison.$nin;
     // https://docs.mongodb.com/manual/reference/operator/query/nin/
