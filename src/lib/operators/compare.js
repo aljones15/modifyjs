@@ -17,9 +17,9 @@ export const compare = {
     
   },
   $eq: function(values, comparison) {
-    const value = comparision.$eq;
+    const value = comparison.$eq;
     // https://docs.mongodb.com/manual/reference/operator/query/eq/
-    return ($not = defaultNot) => $not(values === value);
+    return ($not = defaultNot) => values.filter(v => $not(v === value));
   },
   $gt: function(values, comparison) {
     const value = comparison.$gt;
