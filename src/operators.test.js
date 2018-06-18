@@ -1,4 +1,5 @@
 const { compare } = require('./lib/operators/compare');
+
   describe("$gt", () => {
     it("returns all objects in collection greater than 4", () => {
       const values = [1, 10, 25, 4, 3, 2];
@@ -64,3 +65,26 @@ const { compare } = require('./lib/operators/compare');
       expect(nextValues).toEqual(expected);
     });
   });
+
+  describe("$ne", () => {
+    it("returns all objects in collection not equal to 4", () => {
+      const values = [1, 10, 25, 4, 3, 2];
+      const query = {$ne: 4};
+      const expected = [1, 10, 25, 3 ,2];
+      const curriedCompare = compare.$ne(values, query);
+      const nextValues = curriedCompare();
+      expect(nextValues).toEqual(expected);
+    });
+  });
+
+  describe("$nin", () => {
+    it("returns all objects not in collection in [10, 4, 2, 100, 45]", () => {
+      const values = [1, 10, 25, 4, 3, 2];
+      const query = {$nin: [10, 4, 2, 100, 45]};
+      const expected = [1, 25, 3];
+      const curriedCompare = compare.$nin(values, query);
+      const nextValues = curriedCompare();
+      expect(nextValues).toEqual(expected);
+    });
+  });
+

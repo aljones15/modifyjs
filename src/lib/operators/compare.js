@@ -47,7 +47,7 @@ export const compare = {
     return ($not = defaultNot) => values.filter(v => $not(value.includes(v)));
   },
   $ne: function(values, comparison) {
-    const value = comparision.$ne;
+    const value = comparison.$ne;
     // https://docs.mongodb.com/manual/reference/operator/query/ne/
     return ($not = defaultNot) => values.filter(v => $not(v != value));
   },
