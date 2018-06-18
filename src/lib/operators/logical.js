@@ -1,6 +1,13 @@
 export const logicals {
   types: ['$not', '$or', '$and', '$nor'],
+  parse: (values, query) {
+    const keys = Object.keys(query);
+    const notLogical = keys.filter(k => !logical.types.includes(k));
+    const logicKeys = keys.filter(k => logical.types.includes(k));
+  
+  },
   $not: function(b) {
+    const query = b.$not;
     // just inverts the condition
     // https://docs.mongodb.com/manual/reference/operator/query/not/
     return !b;

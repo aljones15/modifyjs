@@ -14,6 +14,7 @@ export const compare = {
   types: ['$eq', '$gt', '$gte', '$in', '$lt', '$lte', '$ne', '$nin'],
   parse: function(values, comparison) {
     const keys = Object.keys(comparison);
+    const notCompare = keys.filter(k => !compare.types.includes(k));
     
   },
   $eq: function(values, comparison) {
