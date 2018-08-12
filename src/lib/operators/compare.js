@@ -1,11 +1,4 @@
-/**
- * @function defaultNot
- * @param {boolean}
- * @return {boolean}
- * @description defaultNot just returns a default boolean
- */
-export function defaultNot (b) { return b; }
-
+const { defaultNot } = require('./constants');
 /*
  * @object compare
  * @description just a simple organizer for all compare methods
